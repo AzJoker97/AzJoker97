@@ -1,31 +1,25 @@
 package com.example.secondcode.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.example.secondcode.Configs.MinioConfig;
 import com.example.secondcode.Entity.User;
 import com.example.secondcode.Dto.UserDto;
 import com.example.secondcode.Service.UserService;
 import com.example.secondcode.Configs.MessageInfo;
-import com.example.secondcode.Utils.MinioUtil;
 import com.example.secondcode.Vo.UserVo;
-import io.minio.MinioClient;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 @Slf4j
 @RestController
 @RequestMapping("/user")
-//@Api(tags = "用户控制层")
 @Tag(name = "用户管理",description = "用户控制层")
 public class UserController {
 
@@ -100,11 +94,7 @@ public class UserController {
     @PostMapping("/upload")
     @Operation(summary = "文件上传",description = "minio文件上传")
     public String uploadFile(@RequestBody MultipartFile file){
-        MinioConfig minioConfig = new MinioConfig();
-        System.out.println(minioConfig);
-        MinioUtil minioUtil = new MinioUtil(minioConfig.minioClient());
-        System.out.println(minioUtil);
-        minioUtil.uploadFile(file);
         return ("上传成功");
     }
+
 }
