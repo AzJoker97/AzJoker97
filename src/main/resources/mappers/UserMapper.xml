@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <mapper namespace="com.example.secondcode.Entity.User">
+
+    <resultMap type="com.example.secondcode.Entity.User" id="UserResult">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="area" property="area"/>
+        <result column="phone" property="phone"/>
+        <result column="type" property="type"/>
+    </resultMap>
+
+    <resultMap type="com.example.secondcode.Vo.UserVo" id="UserVoResult">
+        <id column ="id" property = "id"/>
+        <result column ="type" property="type"/>
+    </resultMap>
+
+    <select id="getUserById" resultType="com.example.secondcode.Vo.UserVo">
+        select 'id','type' from user
+        where
+        id = # {id}
+    </select>
+    </mapper>
