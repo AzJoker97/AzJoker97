@@ -9,5 +9,6 @@ import org.apache.ibatis.annotations.*;
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
 
-//    public UserVo getUserById(long id);
+    public UserVo getUserById(Long id);
+
 }

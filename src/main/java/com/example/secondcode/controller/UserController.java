@@ -1,11 +1,14 @@
 package com.example.secondcode.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.secondcode.Entity.Type;
 import com.example.secondcode.Entity.User;
 import com.example.secondcode.Dto.UserDto;
+import com.example.secondcode.Service.TypeService;
 import com.example.secondcode.Service.UserService;
 import com.example.secondcode.Configs.MessageInfo;
 import com.example.secondcode.Vo.UserVo;
+import com.example.secondcode.mapper.TypeMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -25,6 +28,12 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private TypeService typeService;
+
+    @Autowired
+    private TypeMapper typeMapper;
 
     /*id查询*/
     @GetMapping("/id")
@@ -97,4 +106,19 @@ public class UserController {
         return ("上传成功");
     }
 
+
+    /**
+    * @Description: 两张表查询
+    * @Param:
+    * @return:
+    * @Author: Login-Moon
+    * @Date: 2024/2/20
+    */
+    @GetMapping("/pageType")
+    public List<Type> listType(){
+        List<Type> typeList = typeService.list();
+//        Type type = typeMapper.findType(1l);
+        log.info("BUG");
+        return typeList;
+    }
 }

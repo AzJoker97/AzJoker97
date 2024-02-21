@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-    <mapper namespace="com.example.secondcode.Entity.User">
+    <mapper namespace="com.example.secondcode.mapper.UserMapper">
 
     <resultMap type="com.example.secondcode.Entity.User" id="UserResult">
         <id column="id" property="id"/>
@@ -11,14 +14,11 @@
         <result column="type" property="type"/>
     </resultMap>
 
-    <resultMap type="com.example.secondcode.Vo.UserVo" id="UserVoResult">
-        <id column ="id" property = "id"/>
-        <result column ="type" property="type"/>
-    </resultMap>
-
     <select id="getUserById" resultType="com.example.secondcode.Vo.UserVo">
         select 'id','type' from user
         where
         id = # {id}
     </select>
+
+
     </mapper>
