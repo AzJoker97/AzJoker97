@@ -15,9 +15,13 @@
     </resultMap>
 
     <select id="getUserById" resultType="com.example.secondcode.Vo.UserVo">
-        select 'id','type' from user
+        select
+            id,
+            type
+        from
+            user
         where
-        id = # {id}
+            id =#{id}
     </select>
 
 

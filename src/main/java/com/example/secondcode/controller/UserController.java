@@ -9,6 +9,7 @@ import com.example.secondcode.Service.UserService;
 import com.example.secondcode.Configs.MessageInfo;
 import com.example.secondcode.Vo.UserVo;
 import com.example.secondcode.mapper.TypeMapper;
+import com.example.secondcode.mapper.UserMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -34,6 +35,9 @@ public class UserController {
 
     @Autowired
     private TypeMapper typeMapper;
+
+    @Autowired
+    private UserMapper userMapper;
 
     /*id查询*/
     @GetMapping("/id")
@@ -116,9 +120,8 @@ public class UserController {
     */
     @GetMapping("/pageType")
     public List<Type> listType(){
-        List<Type> typeList = typeService.list();
-//        Type type = typeMapper.findType(1l);
-        log.info("BUG");
+        List<Type> typeList = typeMapper.findType();
+        UserVo userVo = userMapper.getUserById(1l);
         return typeList;
     }
 }
